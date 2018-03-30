@@ -8,7 +8,7 @@ Charlottes ME-sida i kursen oophp
 
 Hej!
 
-Här är en enkel websida gjort av mig som en del av kursen __oophp__ som ingår i kurspaketet [Webbprogrammering och Databaser](https://www.bth.se/kurspaket/KP852/20172/).
+Här är en enkel websida gjort av mig som en del av kursen __oophp__ som ingår i distanskurspaketet [Webbprogrammering och Databaser](https://www.bth.se/kurspaket/KP852/20172/).
 
 Jag föddes i Stockholmstrakten av Norrländska föräldrar på 70-talet, bor nu på landet i Blekinge med make, 2 barn, 2 katter och en hund.
 
@@ -17,3 +17,9 @@ Har jobbat i Telekom branchen i många år med bl.a mjukvaruutveckling.
 På fritiden är familj och hem i fokus, men försöker även hinna med Mindfulness-övningar såsom promenader i skogen.
 
 Gillar: choklad, lakrits, katter.
+
+Hoppas vi hörs!
+
+mvh
+
+Charlotte "chokolotte" Viktorsson

@@ -1,3 +1,4 @@
+
 /**
  * General setup for layout.
  */
@@ -31,8 +32,10 @@ body {
 .outer-wrap-header {
     max-width: 100%;
     min-height: 2em;
-    background-color: #000;
+    background-color: black;
     color: #fff;
+    background-image: url('../img/gray-floral.png');
+
 }
 
 .outer-wrap-header {
@@ -57,17 +60,22 @@ body {
 .outer-wrap-navbar {
     max-width: 100%;
     min-height: 2em;
-    background-color: #535353;
-    color: #fff;
+
+    background-color: #A9FF00;
+    color: black;
     padding: 0.5em 0;
 }
 
 .outer-wrap-navbar a {
-    color: #fff;
+
+    font-family: "Arial", sans-serif;
+    text-decoration: none;
+    color: black;
 }
 
 .outer-wrap-navbar a:hover {
-    color: #ddd;
+    /*color: #ddd;*/
+        color: black;
 }
 
 
@@ -78,6 +86,7 @@ body {
 .outer-wrap-main {
     min-height: 20em;
     margin-bottom: 2em;
+
 }
 
 .wrap-main h1 {
@@ -96,8 +105,11 @@ body {
 .outer-wrap-footer {
     max-width: 100%;
     min-height: 10em;
-    background-color: #424242;
-    color: #fff;
+    /*background-color: #424242;
+    color: #fff;*/
+    background-color: black;
+    background-image: url('../img/gray-floral.png');
+    color: white;
     padding: 1em 0;
 }
 

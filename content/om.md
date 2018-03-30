@@ -11,4 +11,4 @@ I den här kursen kommer vi, förutom att repetera och fördjupa allt som vi hit
 
 Länka till [dbwebb kursrepot på GitHub](https://github.com/dbwebbse/XXX).
 
-Länka till [ditt eget repo för me/redovisa på GitHub](https://github.com/XXX/XXX).
+Länka till [chokolotte oophpvt18](https://github.com/chokolotte/oophpvt18.git).
