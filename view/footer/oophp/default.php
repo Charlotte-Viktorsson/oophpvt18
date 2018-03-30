@@ -12,5 +12,3 @@ namespace Anax\View;
 
 <?= showEnvironment(get_defined_vars(), get_defined_functions()) ?>
 */
-
-?>

@@ -9,6 +9,6 @@ I den här kursen kommer vi, förutom att repetera och fördjupa allt som vi hit
 
 [FIGURE src=image/puzzle-pieces-1.jpg?w=300 caption="Kursen är en pusselbit i frontend-programmering."]
 
-Länka till [dbwebb kursrepot på GitHub](https://github.com/dbwebbse/XXX).
+Länk till [dbwebb kursrepot på GitHub](https://github.com/dbwebb-se/oophp).
 
-Länka till [chokolotte oophpvt18](https://github.com/chokolotte/oophpvt18.git).
+Länk till [chokolotte oophpvt18](https://github.com/chokolotte/oophpvt18.git).
