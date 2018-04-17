@@ -19,3 +19,14 @@ v2.0.0 (2018-04-13)
 * added gissa in navbar
 * added a view file for the gissa game, one file for the different methods
 * added a route file for the gissa game, with different sections for the different methods
+
+---------------------------------------
+v3.0.0 (2018-04-17)
+
+* upd generated documentation
+* new classes Dice, DiceGraphic, DiceHand, Player, Game100
+* new route file for Game100
+* added game100 in lek page
+* added a route file for Game100
+* added a UML diagram for Game100
+* added text for kmom02 in redovisning

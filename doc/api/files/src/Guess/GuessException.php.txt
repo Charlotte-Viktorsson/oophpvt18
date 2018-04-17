@@ -1,5 +1,6 @@
 <?php
 namespace chvi17\Guess;
+
 /**
  * Exception class for GuessException.
  */

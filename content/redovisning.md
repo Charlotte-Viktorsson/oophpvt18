@@ -36,7 +36,30 @@ Det känns så långt som att kursen kommer att vara en repetition av allt vi ti
 Kmom02
 -------------------------
 
-Här är redovisningstexten
+
+**Hur gick det att överföra spelet “Gissa mitt nummer” in i din me-sida?**
+
+Det gick bra med hjälp av videoserien. Annars hade det varit mer utmanande.
+När det väl är på plats känns det ganska naturligt.
+
+**Berätta om hur du löste uppgiften med Tärningsspelet 100, hur du tänkte, planerade och utförde uppgiften samt hur du organiserade din kod?**
+
+Jag återanvände kod som redan fanns, Dice, DiceHand, skapade nya klasser Player (som har en DiceHand) och Game100 som har en array av Players.
+Eftersom det var mycket ny kod så skapade jag en index sida utanför ramverket för att testa. Mycket av det jobbet kändes sedan bortkastat då det mesta fick göras om till ramverket, men lite fick jag väl testat.
+Min lösning känns inte optimal men fungerar, hade gärna haft mindre kod i route-filen, men jag redde inte ut det. Det blev krångligt att hålla reda på var programmet var hela tiden dels i vyfilen och dels i routen, kanske kunde ha delats upp på något annat sätt.
+
+**Berätta om din syn på modellering likt UML jämfört med verktyg som phpDocumentor. Fördelar, nackdelar, användningsområde? Vad tycker du om konceptet make doc?**
+
+Jag tycker make doc och doc-block är ett bra sätt att dokumentera kod, dock lätt hänt att det blir copy/paste fel någonstans. Jag brukar inte läsa sådan här dokumentation så jättemycket, kollar hellre i koden, där finns ju även mer kommentarer.
+UML är väldigt bra sätt att beskriva klasser, det ger snabbt förståelse hur klasserna hänger ihop. Det underlättar att ha en UML utskriven när man jobbar med klasserna för att lätt hitta metodnamn och parametrar.
+
+**Hur känns det att skriva kod utanför och inuti ramverket, ser du fördelar och nackdelar med de olika sätten?**
+
+Det känns helt ok att skriva i ramverket när man väl vant sig med hur det ska delas upp och var saker ska ligga. Jag arbetade utanför ramverket med game100, men det var mycket som fick göras om sedan för att anpassas till vy-router.
+
+**Vilken är din TIL för detta kmom?**
+
+Jag har lärt mig mycket mer om objektorientering i PHP, om make doc och om lite mer om hur route och vyer samverkar.
 
 
 

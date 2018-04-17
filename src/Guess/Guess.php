@@ -90,7 +90,7 @@ class Guess
                 if ($number == $this->number) {
                     $result = " correct!!";
                     $this->tries -= 1;
-                } else if ($number > $this->number) {
+                } elseif ($number > $this->number) {
                     $result = " too high";
                     $this->tries -= 1;
                 } else {

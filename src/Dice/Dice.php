@@ -1,0 +1,56 @@
+<?php
+namespace chvi17\Dice;
+
+/**
+ * A class for a Dice with a nrOfSides and a current nr.
+ * the Dice has a size, a nr and can be rolled.
+ */
+class Dice
+{
+    /**
+    * @var integer $nrOfSides    The nr of sides for the Dice.
+    * @var integer $nr          The current nr rolled
+    */
+    private $nrOfSides;
+    private $nr;
+
+    /**
+    * Constructor for a Dice
+    *
+    * @param int $nrOfSides the Size of the Dice, deault = 6
+    */
+    public function __construct($nrOfSides = 6)
+    {
+        $this->nrOfSides = $nrOfSides;
+        $this->nr = 1;
+    }
+
+    /**
+    * Get size for the Dice
+    *
+    * @return int $nrOfSides the nrOfSides of the Dice
+    */
+    public function getSize()
+    {
+        return $this->nrOfSides;
+    }
+
+    /**
+    * roll the dice, random nr
+    * @return $nr  the currentNumber
+    */
+    public function roll()
+    {
+        $this->nr = rand(1, $this->nrOfSides);
+        return $this->nr;
+    }
+
+    /**
+    * get the current nr
+    * @return $nr  the currentNumber
+    */
+    public function getNr()
+    {
+        return $this->nr;
+    }
+}

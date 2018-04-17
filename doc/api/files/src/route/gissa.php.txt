@@ -33,8 +33,6 @@ $app->router->get("gissa/get", function () use ($app) {
         if (isset($_GET["doGuess"])) {
             $res = $game->makeGuess($guess);
         }
-
-
     } catch (Exception $e) {
         echo "Got exception: " . get_class($e) . "<hr>";
         echo "Message: " . $e->getMessage() . "<hr>";
