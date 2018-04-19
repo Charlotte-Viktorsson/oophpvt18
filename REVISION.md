@@ -21,6 +21,7 @@ v2.0.0 (2018-04-13)
 * added a route file for the gissa game, with different sections for the different methods
 
 ---------------------------------------
+V2.0.1 (2018-04-19) &
 v3.0.0 (2018-04-17)
 
 * upd generated documentation
