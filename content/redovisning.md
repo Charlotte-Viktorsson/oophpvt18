@@ -66,8 +66,39 @@ Jag har lärt mig mycket mer om objektorientering i PHP, om make doc och om lite
 Kmom03
 -------------------------
 
-Här är redovisningstexten
+**Har du tidigare erfarenheter av att skriva kod som testar annan kod?**
 
+Jag har arbetat med många olika sorts tester! T.ex. enhetstester (till egen och till andras kod), komponenttester (av klasser som hör ihop), integrationstester (integration av enstaka klasser såväl som integration inom större system och mellan olika system).
+
+**Hur ser du på begreppen enhetstestning och att skriva testbar kod?**
+
+Enhetstestning är viktigt och görs ofta av samma person som skrivit koden för att verifiera att den fungerar som tänkt.
+Enhetstestning görs ofta i samband med att koden skrivs, dvs tidigt i processen, vilket är bra eftersom det är kostsamt att hitta felen sent (såsom hos en kund).
+Det är bra att testa gränsvärden och villkor i sin enhetstestning såväl som att kontrollera sina publika metoder.
+Att skapa enhetstester är en bra grund, men behöver oftast kompletteras med andra typer av tester för att verifiera att olika delar av systemet fungerar tillsammans.
+
+Att skriva testbar kod är lite luddigt, men jag håller med om att olika kod är olika svårt att testa.
+En lite mer sammansatt klass som har beteenden som beror på saker utanför den egna klassen är tex svårare att testa än våra exempel med Guess och Dice.
+Om man tillämpar objektorientering och tydliga API-er mellan klasser kommer man långt för att ha sin kod testbar.
+
+**Förklara kort begreppen white/grey/black box testing samt positiva och negativa tester, med dina egna ord.**
+
+White box testning har insyn i och tar ev hänsyn till implementationen av koden. Eftersom designern själv ofta gör enhetstester så är de ofta av typen White box.
+
+Black box testning försöker tänka testkoden som en hemlig låda där ingångar och utgångar undersöks, dvs kollar inte på arkitektur eller implementation. Kan vara bra för att verifiera ett API.
+
+Grey box testning tänker jag är Black box testning med inslag av att tjuvkika i lådan/koden och anpassa tester utefter vad som upptäcks. Jag tror att fel upptäcks fortare med Grey box än med Black box testning.
+
+Positiva tester syftar till att bekräfta att ett system fungerar som tänkt, medans negativa tester syftar till att undersöka hur felsäkert systemet är. Det är viktigt att ha båda sortens tester.
+
+**Hur gick det att genomföra uppgifterna med enhetstester, använde du egna klasser som bas för din testning?**
+
+Uppgiften gick bra, provade dataproviders och flera olika sorters asserts. Testade med min egen Dice klass utöver den givna Guess.
+
+**Vilken är din TIL för detta kmom?**
+
+Kmom03 var väldigt enkelt, känns som det saknas något -kanske något från kmom02 kunde flyttas hit eller tvärtom.
+Jag hade främst problem med installationen av phpunit och XDebug. Jag har tränat på att läsa manualer (phpunit) och lärt mig lite om enhetstestning i PHP.
 
 
 Kmom04
