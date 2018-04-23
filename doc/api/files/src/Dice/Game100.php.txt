@@ -138,6 +138,23 @@ class Game100
     }
 
     /**
+    * method for getting a recommendation if to continue or save
+    * @param integer otherPlayerResult
+    * @return String action
+    */
+    public function continueOrSave($otherPlayerResult)
+    {
+        //playing safe until otherplayer reaches 75%
+        $action = "Save";
+        $thePlayer = $this->players[$this->currentPlayerIndex];
+        $theCurrentTotal = $thePlayer->getResult() + $this->roundSum;
+        if ($otherPlayerResult >= GAMEGOAL * 0.75) {
+            $action = "Continue";
+        }
+        return $action;
+    }
+
+    /**
     * method for finding out who is next to play
     * @return int Id which player should play next
     */

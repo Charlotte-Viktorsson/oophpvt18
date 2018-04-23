@@ -82,7 +82,7 @@ namespace Anax\View;
     <p>Computer sum:  <?=$computerSum?></p>
     <p>Computer action: <?=$computerAction?></p>
 <?php endif; ?>
-<?php if ($status == "Winner")  :?>
+<?php if ($status == "Winner") :?>
     <p>The winner is found!</p>
     <p>Computer Total Sum = <?=$player0->getResult();?>
     <p>Your Total Sum = <?=$player1->getResult();?>

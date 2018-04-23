@@ -37,3 +37,16 @@ V3.0.1 (2018-04-19)
 
 * upd report
 * upd revision
+
+
+V2.0.2 (2018-04-23)
+
+* upd class diagram for dice100
+* added method in Game100, continueOrSave
+* upd view with presentation of computer play result when winning
+
+V2.0.3 (2018-04-23)
+
+* minor fixes when publishing to dbwebb
+* upd REVISION
+* new make doc generated

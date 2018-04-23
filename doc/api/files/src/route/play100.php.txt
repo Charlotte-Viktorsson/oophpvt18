@@ -77,6 +77,7 @@ $app->router->any(["GET", "POST"], "lek/play100", function () use ($app) {
             //datorn spelar
             $computerHand = $game->playGame();
             $computerSum += $player0->getHandSum();
+
             //om 1:a så blir det reset
             $isReset = $game->isResultToBeReset();
             if ($isReset == true) {
@@ -84,20 +85,12 @@ $app->router->any(["GET", "POST"], "lek/play100", function () use ($app) {
                 $computerSum = 0;
             } else {
                 //continue or save?
-                //save if it will reach goal or if player is less than half way to goal
-                if ($computerSum + $player0->getResult() >= 100
-                || $player1->getResult() <= 0.5 * 100) {
-                    //if player only reached half way, play safe and save
-
+                $computerAction = $game->continueOrSave($player1->getResult());
+                if ($computerAction == "Save") {
                     if ($game->save() == "Winner") {
                         $gameStatus = "Winner";
-                    } else { //no winner yet
-                        $computerAction = "Save";
-                        $computerTotalSum = $player0->getResult();
                     }
                 } else {
-                    //continue
-                    $computerAction = "Continue";
                     $computerSum = $game->getRoundSum();
                 }
             }
@@ -108,7 +101,6 @@ $app->router->any(["GET", "POST"], "lek/play100", function () use ($app) {
 
             //om 1:a så blir det reset
             $isReset = $game->isResultToBeReset();
-            //echo(" in playing, isReset = " . $isReset);
         }
     }
 
