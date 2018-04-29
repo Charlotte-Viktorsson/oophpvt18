@@ -59,3 +59,7 @@ V4.0.0 (2018-04-29)
 * Refactoring in play100 game, adding more routes and views.
 * added to show histogram in play100 game
 * new make doc
+
+V4.0.1 (2018-04-29)
+
+* added text in redovisning for kmom04

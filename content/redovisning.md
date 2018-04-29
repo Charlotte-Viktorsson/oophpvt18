@@ -104,8 +104,29 @@ Jag hade främst problem med installationen av phpunit och XDebug. Jag har trän
 Kmom04
 -------------------------
 
-Här är redovisningstexten
 
+**Vilka är dina tankar och funderingar kring trait och interface?**
+
+Interface har jag stött på tidigare, men känner inte igen traits (från tex Java).
+En variant på multipelt arv som funkar ganska bra.
+
+**Hur gick det att skapa intelligensen och taktiken till tärningsspelet, hur gjorde du?**
+
+Jag var någorlunda nöjd med logiken som den redan var; spela säkert och spara för det mesta.
+Datorn väljer fortsätt om motspelaren har mer än 75% samt det egna totala resultat är mindre än 100. (vilket dock kan vara lite dumt om datorn själv har ett lågt värde).
+
+**Några reflektioner från att integrera hårdare in i ramverkets klasser och struktur?**
+
+Det gick smidigt att byta ut till ramverkets eget lager för GET, POST och SESSION.
+
+**Berätta hur väl du lyckades med make test inuti ramverket och hur väl du lyckades att testa din kod med enhetstester och vilken kodtäckning du fick.**
+
+Jag lyckades få 100% codecoverage på allt utom Traitet. Men codecoverage säger inte allt.
+Tror jag har testat och verkligen verifierat de flesta villkoren i alla if-satser med såväl ogiltiga inparametrar som giltiga (och inte bara använt koden för coverage' skull).
+
+**Vilken är din TIL för detta kmom?**
+
+Det som är nytt för mig i det här kmom-et är framförallt traits. Histogram i sig är också nytt för mig.
 
 
 Kmom05
