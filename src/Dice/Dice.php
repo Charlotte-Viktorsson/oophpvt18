@@ -9,9 +9,11 @@ class Dice
 {
     /**
     * @var integer $nrOfSides    The nr of sides for the Dice.
-    * @var integer $nr          The current nr rolled
     */
     private $nrOfSides;
+    /**
+    * @var integer $nr          The current nr rolled
+    */
     private $nr;
 
     /**
@@ -21,6 +23,9 @@ class Dice
     */
     public function __construct($nrOfSides = 6)
     {
+        if (!is_int($nrOfSides)) {
+            $this->nrOfSides = 6;
+        }
         $this->nrOfSides = $nrOfSides;
         $this->nr = 1;
     }

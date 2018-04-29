@@ -18,6 +18,7 @@ $di  = new \Anax\DI\DIFactoryConfig("di.php");
 $app = new \Anax\App\AppDIMagic();
 $di->setShared("app", $app);
 $app->setDI($di);
+$app->session();
 
 // Include user defined routes using $app-style.
 foreach (glob(__DIR__ . "/../src/route/*.php") as $filename) {

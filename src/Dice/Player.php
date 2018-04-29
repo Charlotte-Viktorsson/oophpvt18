@@ -19,12 +19,17 @@ class Player
     /**
     * Constructor to create a Player.
     *
-    * @param string $name The name of the person.
-    * @param int $nrOfDices, nr of Dices
+    * @param string $name The name of the person, default Player
+    * @param int $nrOfDices, nr of Dices, default 5
     * @return void
     */
-    public function __construct(string $name = null, $nrOfDices = 5)
+    public function __construct($name = "Player", $nrOfDices = 5)
     {
+        if (!is_int($nrOfDices)) {
+            $nrOfDices = 5;
+        } elseif (!is_string($name)) {
+            $name = "Player";
+        }
         $this->name = $name;
         $this->result = 0;
         $this->hand = new DiceHand($nrOfDices);
@@ -90,7 +95,7 @@ class Player
 
     /**
     * method to check the highest value of the dices
-    * @return topValue
+    * @return integer topValue
     */
     public function topDice()
     {
@@ -114,5 +119,14 @@ class Player
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+    * method to set players name
+    * @return DiceHistogram the Dice to count in the Histogram
+    */
+    public function getDice()
+    {
+        return $this->hand->getDice();
     }
 }

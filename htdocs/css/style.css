@@ -51,7 +51,14 @@ body {
     left: 1em;
 }
 
-
+/**
+* 100 game
+*/
+.play100Game {
+    position: absolute;
+    top: 12em;
+    left: 1em;
+}
 
 /**
  * Navbar
@@ -106,13 +113,20 @@ body {
     padding: 1em 0;
 }
 
-
-
 /**
  * Responsive
  */
 @media screen and (max-width: 970px) {
     .header-logo {
+        display: none;
+    }
+}
+
+/**
+ * Responsive
+ */
+@media screen and (max-width: 1180px) {
+    .play100Game {
         display: none;
     }
 }

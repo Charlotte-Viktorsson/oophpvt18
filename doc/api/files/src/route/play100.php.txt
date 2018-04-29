@@ -3,75 +3,86 @@
  * Specific routes for the game Play100.
  */
 //var_dump(array_keys(get_defined_vars()));
+
+/**
+* initiation of game
+*/
+$app->router->get("lek/init100", function () use ($app) {
+    $data = [
+        "method" => "get",
+        "action" => "lek/start100",
+    ];
+
+    $app->view->add("lek/Init100", $data);
+    $app->page->render($data);
+});
+
+/**
+* present starting top-values and who should start
+*/
+$app->router->get("lek/start100", function () use ($app) {
+    $data = [
+        "method" => "post",
+        "action" => "lek/playing100",
+    ];
+
+    //set players name, check who will start
+    $playerName = $app->request->getGet("name");
+    $game = new \chvi17\Dice\Game100();
+
+    $game->setPlayerName("Computer", 0);
+    $game->setPlayerName($playerName, 1);
+    $game->reset();
+    $game->checkGameStarter();
+    $app->session->set("Game100", $game);
+
+    $app->view->add("lek/Start100", $data);
+    $app->page->render($data);
+});
+
 /**
  * playing 100
  */
-$app->router->any(["GET", "POST"], "lek/play100", function () use ($app) {
-    session_name(md5(__FILE__));
-    session_start();
-    $title = "Play 100 with the computer";
-    $data = [
-        "title" => $title,
-    ];
+$app->router->any(["GET", "POST"], "lek/playing100", function () use ($app) {
 
-    //get the game if exists or create a new game
-    if (isset($_SESSION["Game"])) {
-        $game = $_SESSION["Game"];
-    } else {
-        $game = new \chvi17\Dice\Game100();
-        $_SESSION["Game"] = $game;
-    }
-
-    $isReset = (isset($_GET["isReset"])) ?
-    htmlentities($_GET["isReset"]) : false;
-
-    $gameStatus= "init";
+    $game = $app->session->get("Game100");
     $computerHand = 0;
     $computerSum = 0;
-    $computerAction = "";
-    $playerAction = "";
+    $gameStatus = "";
+
     $roundSum = 0;
     $player0 = $game->getPlayer(0);
     $player1 = $game->getPlayer(1);
 
-    //init when user has pushed the start button
-    if (isset($_GET["init"])) {
-        $game->reset();
-        $game->checkGameStarter();
-        $gameStatus = "starting";
-    }
-    //if computer result was presented
-    if (isset($_GET["ComputerAction"])) {
-        $computerAction = htmlentities($_GET["ComputerAction"]);
-        if ($computerAction == "Save" || $computerAction == "Reset") {
-            $game->setNextPlayer();
-        }
-    }
-    //take care of playeraction
-    if (isset($_GET["PlayerAction"])) {
-        $playerAction = htmlentities($_GET["PlayerAction"]);
+    $isReset = $app->request->getPost("isReset") ?
+        $app->request->getPost("isReset") : false;
 
-        if ($playerAction == "Save") {
-            //save and check if we have a winner
-            if ($game->save() == "Winner") {
-                $gameStatus = "Winner";
-            } else { //no winner yet
-                $game->setNextPlayer();
-            }
-        } elseif ($playerAction == "Reset") {
-            //reset is already done
+    // if computer result was previously presented
+    $computerAction =  $app->request->getPost("ComputerAction") ?
+        $app->request->getPost("ComputerAction") : "";
+    // if player has pushed save/continue button
+    $playerAction =  $app->request->getPost("PlayerAction") ?
+        $app->request->getPost("PlayerAction") : "";
+
+    // if the winner was presented
+    if ($app->request->getPost("Ending")) {
+            $game->reset();
+            $app->response->redirect("lek/init100");
+    }
+
+    if ($computerAction == "Save" || $computerAction == "Reset" || $playerAction == "Reset") {
+        $game->setNextPlayer();
+    }
+    if ($playerAction == "Save") {
+        //save and check if we have a winner
+        if ($game->save() == "Winner") {
+            $gameStatus = "Winner";
+        } else { //no winner yet
             $game->setNextPlayer();
         }
-    }
-    if (isset($_GET["Ending"])) {
-        $game->reset();
-        $gameStatus = "init";
     }
     // if to play
-    if (isset($_GET["playing"])) {
-        if ($gameStatus != "Winner") {
-            $gameStatus = "playing";
-        }
+    if ($app->request->getPost("playing") && $gameStatus!= "Winner") {
         //är det datorn som spelar?
         if ($game->getCurrentPlayer() == 0) {
             //datorn spelar
@@ -98,7 +109,6 @@ $app->router->any(["GET", "POST"], "lek/play100", function () use ($app) {
             //spelaren spelar
             //slå tärningarna
             $game->playGame();
-
             //om 1:a så blir det reset
             $isReset = $game->isResultToBeReset();
         }
@@ -110,12 +120,13 @@ $app->router->any(["GET", "POST"], "lek/play100", function () use ($app) {
     $data["computerHand"] = $computerHand;
     $data["computerSum"] = $computerSum;
     $data["computerAction"] = $computerAction;
-    $data["player0"] = $player0;
-    $data["player1"] = $player1;
+    $data["playerAction"] = $playerAction;
     $data["isReset"] = ($isReset  == true ? "true" : "false");
 
+    $app->session->set("Game100", $game);
+
     //add view and render page
-    $app->view->add("lek/Game100", $data);
+    $app->view->add("lek/Play100", $data);
     $app->page->render($data);
 });
 

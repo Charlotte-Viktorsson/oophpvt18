@@ -80,12 +80,12 @@ class Guess
      */
     public function makeGuess($number)
     {
-        if ($number == null) {
+        if ($number == null || !is_int($number)) {
             throw new GuessException("You forgot to write a number, try again!");
         }
         if ($this->tries > 0) {
             if ($number < 1 || $number > 100) {
-                throw new GuessException("The number" . $number ." is out of the range 1-100!");
+                throw new GuessException("The number is out of the range 1-100!");
             } else {
                 if ($number == $this->number) {
                     $result = " correct!!";

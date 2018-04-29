@@ -8,7 +8,7 @@ class DiceHand
 {
     /**
     * @var integer $nrOfSides  The nr of sides for the Dice.
-    * @var Dice $dice          The dice to roll
+    * @var DiceHistogram $dice  The dice to roll
     * @var array $handResult    Array of diceresults
     * @var integer $sumOfThrow The sum of a throw
     */
@@ -25,8 +25,11 @@ class DiceHand
     */
     public function __construct($nrOfDices = 5)
     {
+        if (!is_int($nrOfDices)) {
+            $nrOfDices = 5;
+        }
         $this->nrOfDices = $nrOfDices;
-        $this->dice = new Dice();
+        $this->dice = new DiceHistogram();
         $this->throwHand();
     }
 
@@ -41,6 +44,7 @@ class DiceHand
             $this->handResult[$i] = $this->dice->roll();
             $sum += $this->handResult[$i];
         }
+        //var_dump($this->handResult);
         $this->sumOfThrow = $sum;
     }
 
@@ -84,5 +88,14 @@ class DiceHand
             }
         }
         return $top;
+    }
+
+    /**
+    *   function that gets the dice
+    *   @return DiceHistogram
+    */
+    public function getDice()
+    {
+        return $this->dice;
     }
 }

@@ -50,3 +50,12 @@ V2.0.3 (2018-04-23)
 * minor fixes when publishing to dbwebb
 * upd REVISION
 * new make doc generated
+
+V4.0.0 (2018-04-29)
+
+* added unit tests in redovisa for all DiceClasses
+* added Histogram, HistogramInterface and HistogramTrait classes
+* added codecoverage.png to show test codecoverage
+* Refactoring in play100 game, adding more routes and views.
+* added to show histogram in play100 game
+* new make doc

@@ -7,7 +7,8 @@ Du kan skriva egna routes i filen <code>src/route/app.php</code>, där finns nå
 
 * [Hello world](lek/hello-world)
 * [Hello world inuti me-sidan](lek/hello-world-wrap)
-* [Tärningsspel 100](lek/play100)
+
+* [Tärningsspel 100](lek/init100)
 
 
 Du kan också lägga till vanlig PHP-kod i filer under katalogen htdocs, de kan du köra som vanliga enkla PHP-program.
