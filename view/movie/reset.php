@@ -1,18 +1,32 @@
 <?php
+
+namespace Anax\View;
+
+/**
+* Template file to render a view
+*/
+
+// show incoming variables and view helper functions
+// echo showEnvironment(get_defined_vars(), get_defined_functions());
+
 // Restore the database to its original settings
-$file   = "sql/setup.sql";
-$mysql  = "/usr/bin/mysql";
+$file   = "../sql/movie/setup.sql";
+//$mysql  = "/usr/bin/mysql";
+$mysql  = "C:/xampp/mysql/bin/mysql";
+
+$reset = $reset ?? null;
+
 $output = null;
 
 // Extract hostname and databasename from dsn
 $dsnDetail = [];
-preg_match("/mysql:host=(.+);dbname=([^;.]+)/", $databaseConfig["dsn"], $dsnDetail);
+preg_match("/mysql:host=(.+);dbname=([^;.]+)/", $app->db->getConfig("dsn"), $dsnDetail);
 $host = $dsnDetail[1];
 $database = $dsnDetail[2];
-$login = $databaseConfig["login"];
-$password = $databaseConfig["password"];
+$login = $app->db->getConfig("username");
+$password = $app->db->getConfig("password");
 
-if (isset($_POST["reset"]) || isset($_GET["reset"])) {
+if ($reset != null) {
     $command = "$mysql -h{$host} -u{$login} -p{$password} $database < $file 2>&1";
     $output = [];
     $status = null;
@@ -24,6 +38,7 @@ if (isset($_POST["reset"]) || isset($_GET["reset"])) {
 
 ?>
 <form method="post">
-    <input type="submit" name="reset" value="Reset database">
+    <br>
+    <input type="submit" name="DoReset" value="Reset database">
     <?= $output ?>
 </form>

@@ -103,12 +103,13 @@ body {
 * for movie tables
 */
 table {
-    border: 1px solid #ccc;
+    margin-top: 0.5em;
+    border: 2px solid #a9ff00;
     padding: 0.5em;
 }
 
 tr.first {
-    background-color: #ddd;
+    background-color: #a9ff00;
 }
 
 tr:hover {

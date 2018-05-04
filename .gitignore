@@ -4,3 +4,4 @@
 memory::
 composer.lock
 cache
+/config/database.php

@@ -33,7 +33,7 @@ if ($_SERVER["SERVER_NAME"] === "www.student.bth.se") {
     ];
 }
 /*
-I den lokala miljön
+till den lokala miljön
 */
 return [
     "dsn"             => "mysql:host=127.0.0.1;dbname=oophp;",

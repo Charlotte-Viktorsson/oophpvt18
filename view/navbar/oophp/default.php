@@ -17,5 +17,6 @@ namespace Anax\View;
     <a href="<?= url("om") ?>">Om</a> |
     <a href="<?= url("lek") ?>">Lek</a> |
     <a href="<?= url("gissa") ?>">Gissa</a> |
+    <a href="<?= url("movies") ?>">Filmer</a> |
     <a href="<?= url("debug") ?>">Debug</a>
 </navbar>
