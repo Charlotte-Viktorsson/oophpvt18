@@ -46,3 +46,5 @@ if ($action != null && substr_count($action, "edit") > 0) {
     </p>
     </fieldset>
 </form>
+
+<?php require("footer.php");

@@ -19,24 +19,6 @@
 // }
 
 
-
-// /**
-//  * Get value from POST variable or return default value.
-//  *
-//  * @param string $key     to look for
-//  * @param mixed  $default value to set if key does not exists
-//  *
-//  * @return mixed value from POST or the default value
-//  */
-// function getPost($key, $default = null)
-// {
-//     return isset($_POST[$key])
-//         ? $_POST[$key]
-//         : $default;
-// }
-
-
-
 /**
  * Sanitize value for output in view.
  *
@@ -48,8 +30,6 @@ function esc($value)
 {
     return htmlentities($value);
 }
-
-
 
 /**
  * Function to create links for sorting.

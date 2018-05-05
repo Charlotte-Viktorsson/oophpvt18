@@ -132,9 +132,30 @@ Det som är nytt för mig i det här kmom-et är framförallt traits. Histogram 
 Kmom05
 -------------------------
 
-Här är redovisningstexten
+
+**Några reflektioner kring koden i övningen för PHP PDO och MySQL?**
+
+Jag tyckte koden var ganska utförligt beskriven och förklarad i övningen.
+
+**Hur gick det att överföra koden in i ramverket, stötte du på några utmaningar?**
+
+Det var enkelt att se var filerna skulle läggas och med videons hjälp kom jag igång någorlunda snabbt.
+Jag tycker i allmänhet det är klurigt att få ihop flödet när samma kod exekveras i olika lägen (såsom route-filer och vyer).
+Det som var klurigt med sortering och pagination var att få ordning på sökvägarna när man tryckte på pilarna/antal, där tog jag hjälp av funktionen currentRoute. För reset var det klurigt att hitta till mysql och setup filen (det blev olika sökvägar utanför och inifrån ramverket på min Windows och ännu en annan från studentservern).
 
 
+**Berätta om din slutprodukt för filmdatabasen, gjorde du endast basfunktionaliteten eller lade du till extra features och hur tänkte du till kring användarvänligheten och din kodstruktur?**
+
+Utöver basfunktionaliteten så har jag gjort reset av databasen (först lokalt och sedan på studentservern) samt sortering och pagination.
+
+Jag har valt att ha en startsida med länkar till alla movie-delar. Från respektive view-sida finns en footer med länkar till alla movie sidor. Inget som överväldigar men jag tycker det är okej.
+Något som jag hade velat ha är Edit/Delete länkar i show-all vyernan på respektive rad, men lyckades inte så bra med implementation av det i route-filen. Liksom i exemplet så lägger jag till en default film vid add som sedan editeras, där saknar jag ev. en cancel-knapp.
+
+När det gäller kodstruktur så har jag försökt lägga saker på rätt plats i ramverket och har till viss del försökt att återanvända vyer från olika route-delar.
+
+**Vilken är din TIL för detta kmom?**
+
+Jag tycker inte det är något som känns jättenytt men en massa småsaker som jag upptäckt runt hur ramverket samverkar med mina vyer och routes. Har även fått träna på att använda och anpassa kod som jag inte helt förstår.
 
 Kmom06
 -------------------------

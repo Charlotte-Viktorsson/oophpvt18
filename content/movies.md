@@ -3,6 +3,8 @@ Movies start page
 Show
 -----
 * [Show all movies](movie)
+* [Show all movies with sorting](movie/show-all-sort)
+* [Show all movies with pagination](movie/show-all-paginate)
 
 Search
 -----

@@ -10,12 +10,14 @@ namespace Anax\View;
 // echo showEnvironment(get_defined_vars(), get_defined_functions());
 
 // Restore the database to its original settings
+if ($app->request->getServer('SERVER_NAME') == "www.student.bth.se") {
+    $mysql  = "/usr/bin/mysql";
+} else {
+    $mysql  = "C:/xampp/mysql/bin/mysql";
+}
+
 $file   = "../sql/movie/setup.sql";
-//$mysql  = "/usr/bin/mysql";
-$mysql  = "C:/xampp/mysql/bin/mysql";
-
 $reset = $reset ?? null;
-
 $output = null;
 
 // Extract hostname and databasename from dsn
@@ -42,3 +44,4 @@ if ($reset != null) {
     <input type="submit" name="DoReset" value="Reset database">
     <?= $output ?>
 </form>
+<?php require("footer.php");

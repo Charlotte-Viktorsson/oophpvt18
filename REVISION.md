@@ -63,3 +63,11 @@ V4.0.0 (2018-04-29)
 V4.0.1 (2018-04-29)
 
 * added text in redovisning for kmom04
+
+V5.0.0 (2019-05-05)
+
+* movies link in Navbar
+* movies startpage
+* movie views
+* movie route file
+* new make doc generated
