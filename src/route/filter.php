@@ -1,0 +1,97 @@
+<?php
+/**
+ * App specific routes.
+ */
+//var_dump(array_keys(get_defined_vars()));
+
+
+
+/**
+ * Showing text filtered with bbcode.
+ */
+$app->router->get("filter/bbCode", function () use ($app) {
+    $data = [
+        "title" => "Test filtering with bbcode",
+        "textType" => "bbcode",
+        "text" => "",
+    ];
+
+    $text = file_get_contents(__DIR__ . "/../../text/example-bbcode.txt");
+    $myTextFilter = new \chvi17\TextFilter\TextFilter2();
+    $filter = array("bbcode");
+    $html = $myTextFilter->parse($text, $filter);
+
+    $data["text"] = $text;
+    $data["html"] = $html;
+    //add view and render page
+    $app->view->add("filter/showFilterExample", $data);
+    $app->page->render($data);
+});
+
+/**
+* Showing text filtered with link.
+ */
+$app->router->get("filter/link", function () use ($app) {
+    $data = [
+        "title" => "Test filtering with link",
+        "textType" => "link",
+    ];
+
+    $data["text"] = "";
+
+    $text = file_get_contents(__DIR__ . "/../../text/example-link.txt");
+    $myTextFilter = new \chvi17\TextFilter\TextFilter2();
+    $filter = array("link");
+    $html = $myTextFilter->parse($text, $filter);
+
+    $data["text"] = $text;
+    $data["html"] = $html;
+    $app->view->add("filter/showFilterExample", $data);
+    $app->page->render($data);
+});
+
+
+/**
+* Showing text filtered with markdown.
+ */
+$app->router->get("filter/markdown", function () use ($app) {
+    $data = [
+        "title" => "Test filtering with markdown",
+        "textType" => "markdown",
+    ];
+
+    $data["text"] = "";
+
+    $text = file_get_contents(__DIR__ . "/../../text/example-markdown.md");
+    $myTextFilter = new \chvi17\TextFilter\TextFilter2();
+    $filter = array("markdown");
+    $html = $myTextFilter->parse($text, $filter);
+
+    $data["text"] = $text;
+    $data["html"] = $html;
+    $app->view->add("filter/showFilterExample", $data);
+    $app->page->render($data);
+});
+
+
+/**
+* Showing text filtered with markdown.
+ */
+$app->router->get("filter/mixedFilter", function () use ($app) {
+    $data = [
+        "title" => "Test filtering with both markdown, link, bbcode and nl2br",
+        "textType" => "mixed",
+    ];
+
+    $data["text"] = "";
+
+    $text = file_get_contents(__DIR__ . "/../../text/example-mixed.txt");
+    $myTextFilter = new \chvi17\TextFilter\TextFilter2();
+    $filter = array("markdown", "bbcode", "nl2br", "link");
+    $html = $myTextFilter->parse($text, $filter);
+
+    $data["text"] = $text;
+    $data["html"] = $html;
+    $app->view->add("filter/showFilterExample", $data);
+    $app->page->render($data);
+});

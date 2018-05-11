@@ -1,0 +1,7 @@
+<p>This is as simple example of using the PHP-function <code>make_clickable()</code>.</p>
+<p>The function takes a text as argument and looks through it using a regular expression.</p>
+<p>The expression matches all <a href="http://sv.wikipedia.org/wiki/Uniform_Resource_Locator">URLs</a> that are in the text and makes them clickable, without messing up the links that are already there.
+The url must start with <b>http</b> or <b>https</b>. </p>
+<p>The regular expression ignores all links that are already available within an existing anchor (href) or iframe (src).</p>
+<p>This link should for example be made clickable: http://dbwebb.se and so should this link http://dbwebb.se/kod-exempel/function_to_make_links_clickable/ and so should this: http://dbwebb.se/kod-exempel/function_to_make_links_clickable#id.</p>
+<p>This link on the other hand should not be changed: <a href="http://www.aftonbladet.se">aftonbladet</a> </p>

@@ -160,7 +160,11 @@ Jag tycker inte det är något som känns jättenytt men en massa småsaker som 
 Kmom06
 -------------------------
 
-Här är redovisningstexten
+**Hur gick det att jobba med klassen för filtrering och formatting av texten?**
+**Berätta om din klasstruktur och kodstruktur för din lösning av webbsidor med innehåll i databasen.**
+**Hur känner du rent allmänt för den koden du skrivit i din me/redovisa, vad är bra och mindre bra? Ser du potential till refactoring av din kod och/eller behov av stöd från ramverket?**
+**Vilken är din TIL för detta kmom?**
+
 
 
 

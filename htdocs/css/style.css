@@ -61,6 +61,15 @@ body {
 }
 
 /**
+* 100 game
+*/
+.pencil {
+    position: absolute;
+    top: 12em;
+    left: 1em;
+}
+
+/**
  * Navbar
  */
 .outer-wrap-navbar {
@@ -163,10 +172,14 @@ form {
 }
 
 /**
- * Responsive
+ * Responsive image
  */
 @media screen and (max-width: 1180px) {
     .play100Game {
+        display: none;
+    }
+    
+    .pencil {
         display: none;
     }
 }
