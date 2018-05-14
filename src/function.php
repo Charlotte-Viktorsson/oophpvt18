@@ -3,21 +3,34 @@
  * File with general functions.
  */
 
-// /**
-//  * Get value from GET variable or return default value.
-//  *
-//  * @param string $key     to look for
-//  * @param mixed  $default value to set if key does not exists
-//  *
-//  * @return mixed value from GET or the default value
-//  */
-// function getGet($key, $default = null)
-// {
-//     return isset($_GET[$key])
-//         ? $_GET[$key]
-//         : $default;
-// }
 
+/**
+ * Check if key is set in POST.
+ *
+ * @param mixed $key     to look for
+ *
+ * @return boolean true if key is set, otherwise false
+ */
+function hasKeyPost($key)
+{
+    return array_key_exists($key, $_POST);
+}
+
+/**
+ * Create a slug of a string, to be used as url.
+ *
+ * @param string $str the string to format as slug.
+ *
+ * @return str the formatted slug.
+ */
+function slugify($str)
+{
+    $str = mb_strtolower(trim($str));
+    $str = str_replace(array('å','ä','ö'), array('a','a','o'), $str);
+    $str = preg_replace('/[^a-z0-9-]/', '-', $str);
+    $str = trim(preg_replace('/-+/', '-', $str), '-');
+    return $str;
+}
 
 /**
  * Sanitize value for output in view.
@@ -49,8 +62,6 @@ function orderby($column, $route)
 EOD;
 }
 
-
-
 /**
  * Function to create links for sorting and keeping the original querystring.
  *
@@ -71,8 +82,6 @@ function orderby2($column, $route)
 </span>
 EOD;
 }
-
-
 
 /**
  * Use current querystring as base, extract it to an array, merge it
@@ -95,4 +104,59 @@ function mergeQueryString($options, $prepend = "?")
 
     // Build and return the modified querystring as url
     return $prepend . http_build_query($query);
+}
+
+
+/**
+ * Get value from POST variable or return default value.
+ *
+ * @param mixed $key     to look for, or value array
+ * @param mixed $default value to set if key does not exists
+ *
+ * @return mixed value from POST or the default value
+ */
+function getPost($key, $default = null)
+{
+    if (is_array($key)) {
+        // $key = array_flip($key);
+        // return array_replace($key, array_intersect_key($_POST, $key));
+        foreach ($key as $val) {
+            $post[$val] = getPost($val);
+        }
+        return $post;
+    }
+
+    return isset($_POST[$key])
+        ? $_POST[$key]
+        : $default;
+}
+
+/**
+*   function to set a checkbox checked or not
+*   @param string stackstring
+*   @param string needle to search for
+*   @return string checked or empty string
+*/
+function checkChecked($aStack, $aNeedle)
+{
+    if (strpos($aStack, $aNeedle) !== false) {
+        return "checked";
+    } else {
+        return "";
+    }
+}
+
+/**
+*   function to set a selectbox selected or not
+*   @param string stackstring
+*   @param string needle to search for
+*   @return string selected or empty string
+*/
+function checkSelected($aStack, $aNeedle)
+{
+    if (strpos($aStack, $aNeedle) !== false) {
+        return "selected";
+    } else {
+        return "";
+    }
 }

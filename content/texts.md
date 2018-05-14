@@ -2,18 +2,20 @@ Texts start page
 ======
 Show
 -----
-WORK IN PROGRESS
-* [Show all texts](texts)
+
+* [Show all texts](text/show-all)
+* [Show all pages](text/show-pages)
+* [Show all posts](text/show-posts)
 
 Administration
 -----
-WORK IN PROGRESS
-* [Update text](texts/select)
-* [Delete text](texts/select)
-* [Add text](texts/add-movie)
+
+* [Update text](text/admin)
+* [Delete text](text/admin)
+* [Add text](text/create)
 
 
-Test formatting
+Formatting tests
 ----
 * [bbcode test](filter/bbCode)
 * [link test](filter/link)

@@ -23,25 +23,27 @@ class TextFilter2
      *
      * @return string with the formatted text.
      */
-    public function parse($text, $filter) {
+    public function parse($text, $filter)
+    {
         $formattedText = $text;
         foreach ($filter as $rule) {
+            echo($rule . " ");
             switch ($rule) {
                 case "bbcode":
                     $formattedText = $this->bbcode2html($formattedText);
-                break;
+                    break;
                 case "markdown":
                     $formattedText = $this->markdown($formattedText);
-                break;
+                    break;
                 case "nl2br":
                     $formattedText = $this->nl2br($formattedText);
-                break;
+                    break;
                 case "link":
                     $formattedText = $this->makeClickable($formattedText);
-                break;
+                    break;
                 default:
                     //echo("default, rule:" . $rule . "received");
-                break;
+                    break;
             }
         }
         return $formattedText;
@@ -114,7 +116,8 @@ class TextFilter2
      *
      * @return string the formatted text.
      */
-    private function nl2br($text) {
+    private function nl2br($text)
+    {
         return nl2br($text);
     }
 }

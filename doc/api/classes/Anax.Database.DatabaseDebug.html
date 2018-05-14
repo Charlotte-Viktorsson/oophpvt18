@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>Anax API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">Anax API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Anax.html">\Anax</a></li>
+                                                        <li><a href="../namespaces/chvi17.html">\chvi17</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">206</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-397225372"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-397225372" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-283428918"></a>
+                                <a href="../namespaces/Anax.html" style="margin-left: 30px; padding-left: 0">Anax</a>
+            </div>
+            <div id="namespace-283428918" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-422062582"></a>
+                                <a href="../namespaces/Anax.App.html" style="margin-left: 30px; padding-left: 0">App</a>
+            </div>
+            <div id="namespace-422062582" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.App.App.html">App</a></li>
+                                                    <li class="class"><a href="../classes/Anax.App.App.html">App</a></li>
+                                                    <li class="class"><a href="../classes/Anax.App.AppDI.html">AppDI</a></li>
+                                                    <li class="class"><a href="../classes/Anax.App.AppDIMagic.html">AppDIMagic</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-675866323"></a>
+                                <a href="../namespaces/Anax.Common.html" style="margin-left: 30px; padding-left: 0">Common</a>
+            </div>
+            <div id="namespace-675866323" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.Common.AppInjectableInterface.html">AppInjectableInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Anax.Common.ConfigureInterface.html">ConfigureInterface</a></li>
+                                                                            <li class="trait"><a href="../classes/Anax.Common.AppInjectableTrait.html">AppInjectableTrait</a></li>
+                                                    <li class="trait"><a href="../classes/Anax.Common.ConfigureTrait.html">ConfigureTrait</a></li>
+                                                                            <li class="class"><a href="../classes/Anax.Common.ConfigurationException.html">ConfigurationException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1784684069"></a>
+                                <a href="../namespaces/Anax.Configure.html" style="margin-left: 30px; padding-left: 0">Configure</a>
+            </div>
+            <div id="namespace-1784684069" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.Configure.ConfigureInterface.html">ConfigureInterface</a></li>
+                                                                            <li class="trait"><a href="../classes/Anax.Configure.Configure2Trait.html">Configure2Trait</a></li>
+                                                    <li class="trait"><a href="../classes/Anax.Configure.ConfigureTrait.html">ConfigureTrait</a></li>
+                                                                            <li class="class"><a href="../classes/Anax.Configure.Exception.html">Exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1651891248"></a>
+                                <a href="../namespaces/Anax.Database.html" style="margin-left: 30px; padding-left: 0">Database</a>
+            </div>
+            <div id="namespace-1651891248" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-675830557"></a>
+                                <a href="../namespaces/Anax.Database.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-675830557" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.Database.Exception.ActiveRecordException.html">ActiveRecordException</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.Exception.BuildException.html">BuildException</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.Exception.Exception.html">Exception</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Anax.Database.QueryBuilderTrait.html">QueryBuilderTrait</a></li>
+                                                                            <li class="class"><a href="../classes/Anax.Database.ActiveRecordModel.html">ActiveRecordModel</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.Database.html">Database</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.DatabaseConfigure.html">DatabaseConfigure</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.DatabaseDebug.html">DatabaseDebug</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.DatabaseQueryBuilder.html">DatabaseQueryBuilder</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Database.QueryBuilder.html">QueryBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-221820196"></a>
+                                <a href="../namespaces/Anax.DI.html" style="margin-left: 30px; padding-left: 0">DI</a>
+            </div>
+            <div id="namespace-221820196" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-836680673"></a>
+                                <a href="../namespaces/Anax.DI.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-836680673" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.DI.Exception.DIExceptionInterface.html">DIExceptionInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Anax.DI.Exception.NotFoundExceptionInterface.html">NotFoundExceptionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Anax.DI.Exception.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Anax.DI.Exception.NotFoundException.html">NotFoundException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.DI.DIInterface.html">DIInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Anax.DI.InjectionAwareInterface.html">InjectionAwareInterface</a></li>
+                                                                            <li class="trait"><a href="../classes/Anax.DI.DIMagicTrait.html">DIMagicTrait</a></li>
+                                                    <li class="trait"><a href="../classes/Anax.DI.DIServiceSetBaseTrait.html">DIServiceSetBaseTrait</a></li>
+                                                    <li class="trait"><a href="../classes/Anax.DI.InjectionAwareTrait.html">InjectionAwareTrait</a></li>
+                                                    <li class="trait"><a href="../classes/Anax.DI.InjectionMagicTrait.html">InjectionMagicTrait</a></li>
+                                                                            <li class="class"><a href="../classes/Anax.DI.DI.html">DI</a></li>
+                                                    <li class="class"><a href="../classes/Anax.DI.DIFactoryConfig.html">DIFactoryConfig</a></li>
+                                                    <li class="class"><a href="../classes/Anax.DI.DIFactoryConfigMagic.html">DIFactoryConfigMagic</a></li>
+                                                    <li class="class"><a href="../classes/Anax.DI.DIFactoryDefault.html">DIFactoryDefault</a></li>
+                                                    <li class="class"><a href="../classes/Anax.DI.DIFactoryTest.html">DIFactoryTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-158824163"></a>
+                                <a href="../namespaces/Anax.Page.html" style="margin-left: 30px; padding-left: 0">Page</a>
+            </div>
+            <div id="namespace-158824163" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.Page.PageRenderInterface.html">PageRenderInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Anax.Page.DebugController.html">DebugController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.DebugController.html">DebugController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.DevelopController.html">DevelopController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.ErrorController.html">ErrorController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.ErrorController.html">ErrorController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.FlatFileContentController.html">FlatFileContentController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.FlatFileContentController.html">FlatFileContentController</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.Page.html">Page</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.Page.html">Page</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Page.PageRender.html">PageRender</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-292048644"></a>
+                                <a href="../namespaces/Anax.Request.html" style="margin-left: 30px; padding-left: 0">Request</a>
+            </div>
+            <div id="namespace-292048644" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.Request.Request.html">Request</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-44727755"></a>
+                                <a href="../namespaces/Anax.Response.html" style="margin-left: 30px; padding-left: 0">Response</a>
+            </div>
+            <div id="namespace-44727755" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.Response.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Response.Response.html">Response</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Response.ResponseUtility.html">ResponseUtility</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2011840403"></a>
+                                <a href="../namespaces/Anax.Route.html" style="margin-left: 30px; padding-left: 0">Route</a>
+            </div>
+            <div id="namespace-2011840403" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1746479897"></a>
+                                <a href="../namespaces/Anax.Route.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-1746479897" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.Route.Exception.ConfigurationException.html">ConfigurationException</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Route.Exception.ForbiddenException.html">ForbiddenException</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Route.Exception.InternalErrorException.html">InternalErrorException</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Route.Exception.NotFoundException.html">NotFoundException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.Route.Route.html">Route</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Route.Router.html">Router</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Route.RouterInjectable.html">RouterInjectable</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-396916742"></a>
+                                <a href="../namespaces/Anax.Session.html" style="margin-left: 30px; padding-left: 0">Session</a>
+            </div>
+            <div id="namespace-396916742" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.Session.SessionInterface.html">SessionInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Anax.Session.Session.html">Session</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Session.SessionConfigurable.html">SessionConfigurable</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-369794302"></a>
+                                <a href="../namespaces/Anax.TextFilter.html" style="margin-left: 30px; padding-left: 0">TextFilter</a>
+            </div>
+            <div id="namespace-369794302" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Anax.TextFilter.TShortcode.html">TShortcode</a></li>
+                                                    <li class="trait"><a href="../classes/Anax.TextFilter.TTextUtilities.html">TTextUtilities</a></li>
+                                                                            <li class="class"><a href="../classes/Anax.TextFilter.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Anax.TextFilter.TextFilter.html">TextFilter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1118002251"></a>
+                                <a href="../namespaces/Anax.Url.html" style="margin-left: 30px; padding-left: 0">Url</a>
+            </div>
+            <div id="namespace-1118002251" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Anax.Url.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Anax.Url.Url.html">Url</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-328251449"></a>
+                                <a href="../namespaces/Anax.View.html" style="margin-left: 30px; padding-left: 0">View</a>
+            </div>
+            <div id="namespace-328251449" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Anax.View.ViewRenderFileInterface.html">ViewRenderFileInterface</a></li>
+                                                                            <li class="trait"><a href="../classes/Anax.View.ViewHelperTrait.html">ViewHelperTrait</a></li>
+                                                                            <li class="class"><a href="../classes/Anax.View.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Anax.View.View.html">View</a></li>
+                                                    <li class="class"><a href="../classes/Anax.View.View2.html">View2</a></li>
+                                                    <li class="class"><a href="../classes/Anax.View.ViewCollection.html">ViewCollection</a></li>
+                                                    <li class="class"><a href="../classes/Anax.View.ViewContainer.html">ViewContainer</a></li>
+                                                    <li class="class"><a href="../classes/Anax.View.ViewRenderFile.html">ViewRenderFile</a></li>
+                                                    <li class="class"><a href="../classes/Anax.View.ViewRenderFile2.html">ViewRenderFile2</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2053679525"></a>
+                                <a href="../namespaces/chvi17.html" style="margin-left: 30px; padding-left: 0">chvi17</a>
+            </div>
+            <div id="namespace-2053679525" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-969177786"></a>
+                                <a href="../namespaces/chvi17.Dice.html" style="margin-left: 30px; padding-left: 0">Dice</a>
+            </div>
+            <div id="namespace-969177786" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/chvi17.Dice.HistogramInterface.html">HistogramInterface</a></li>
+                                                                            <li class="trait"><a href="../classes/chvi17.Dice.HistogramTrait.html">HistogramTrait</a></li>
+                                                                            <li class="class"><a href="../classes/chvi17.Dice.Dice.html">Dice</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Dice.DiceGraphic.html">DiceGraphic</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Dice.DiceHand.html">DiceHand</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Dice.DiceHistogram.html">DiceHistogram</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Dice.Game100.html">Game100</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Dice.Histogram.html">Histogram</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Dice.Player.html">Player</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-908451848"></a>
+                                <a href="../namespaces/chvi17.Guess.html" style="margin-left: 30px; padding-left: 0">Guess</a>
+            </div>
+            <div id="namespace-908451848" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/chvi17.Guess.Guess.html">Guess</a></li>
+                                                    <li class="class"><a href="../classes/chvi17.Guess.GuessException.html">GuessException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-528781812"></a>
+                                <a href="../namespaces/chvi17.TextFilter.html" style="margin-left: 30px; padding-left: 0">TextFilter</a>
+            </div>
+            <div id="namespace-528781812" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/chvi17.TextFilter.TextFilter2.html">TextFilter2</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Anax.Database.html">\Anax\Database</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Anax\Database</small>DatabaseDebug</h1>
+                    <p><em>Database wrapper, provides a database API on top of PHP PDO for
+enhancing the API and dealing with error reporting and tracking.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Anax.Database.Database.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_setOptions" class="">setOptions()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_setOption" class="">setOption()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_connect" class="">connect()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_executeFetchAll" class="">executeFetchAll()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_executeFetch" class="">executeFetch()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_executeFetchClass" class="">executeFetchClass()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_executeFetchInto" class="">executeFetchInto()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetchAll" class="">fetchAll()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetch" class="">fetch()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetchClass" class="">fetchClass()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetchAllClass" class="">fetchAllClass()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetchInto" class="">fetchInto()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_execute" class="">execute()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_lastInsertId" class="">lastInsertId()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_rowCount" class="">rowCount()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetchObject" class="">fetchObject()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_fetchOne" class="">fetchOne()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_loadHistory" class="">loadHistory()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_saveHistory" class="">saveHistory()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_getNumQueries" class="">getNumQueries()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_getQueries" class="">getQueries()</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#method_dump" class="">dump()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Anax.Database.Database.html#method_createException" class="">createException()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_pdoException" class="">pdoException()</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#method_statementException" class="">statementException()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Anax.Database.Database.html#property_options" class="">$options</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/Anax.Database.Database.html#method_expandParamArray" class="">expandParamArray()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Anax.Database.Database.html#property_pdo" class="">$pdo</a><br />
+                                                                    <a href="../classes/Anax.Database.Database.html#property_stmt" class="">$stmt</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#property_numQueries" class="">$numQueries</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#property_queries" class="">$queries</a><br />
+                                                                    <a href="../classes/Anax.Database.DatabaseDebug.html#property_params" class="">$params</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/vendor.anax.database.src.Database.DatabaseDebug.html"><div class="path-wrapper">vendor\anax\database\src\Database\DatabaseDebug.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Anax.Database.Database.html">\Anax\Database\Database</a></div>
+                                                                                                    <div class="namespace-wrapper">\Anax\Database\DatabaseDebug</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_options" name="property_options" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$options</h3>
+                <pre class="signature">$options : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                &mdash; used when creating the PDO object                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_pdo" name="property_pdo" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$pdo</h3>
+                <pre class="signature">$pdo : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_stmt" name="property_stmt" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$stmt</h3>
+                <pre class="signature">$stmt : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_numQueries" name="property_numQueries" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$numQueries</h3>
+                <pre class="signature">$numQueries : integer</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                &mdash; count all queries made                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_queries" name="property_queries" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$queries</h3>
+                <pre class="signature">$queries : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_params" name="property_params" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$params</h3>
+                <pre class="signature">$params : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$options = array()</span>) </pre>
+                <p><em>Constructor creating a PDO object connecting to a choosen database.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>containing details for connecting to the database.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setOptions" name="method_setOptions" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setOptions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setOptions(array  <span class="argument">$options = array()</span>) : void</pre>
+                <p><em>Set options and connection details.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$options </td>
+                                <td><p>containing details for connecting to the database.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setOption" name="method_setOption" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setOption()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setOption(string  <span class="argument">$option</span>, mixed  <span class="argument">$value</span>) : self</pre>
+                <p><em>Set a single option.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$option </td>
+                                <td><p>which to set.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td><p>to set.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    self
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_connect" name="method_connect" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">connect()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">connect() : self</pre>
+                <p><em>Connect to the database.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    self
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_executeFetchAll" name="method_executeFetchAll" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">executeFetchAll()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">executeFetchAll(string  <span class="argument">$query</span>, array  <span class="argument">$params = array()</span>) : mixed</pre>
+                <p><em>Execute a select-query with arguments and return the resultset.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>the SQL statement</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>the params array</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>with resultset</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_executeFetch" name="method_executeFetch" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">executeFetch()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">executeFetch(string  <span class="argument">$query</span>, array  <span class="argument">$params = array()</span>) : mixed</pre>
+                <p><em>Execute a select-query with arguments and return the first row
+in the resultset.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>the SQL statement</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>the params array</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>with resultset</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_executeFetchClass" name="method_executeFetchClass" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">executeFetchClass()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">executeFetchClass(string  <span class="argument">$query</span>, array  <span class="argument">$params</span>, string  <span class="argument">$class</span>) : object</pre>
+                <p><em>Execute a select-query with arguments and insert the results into
+a new object of the class.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>the SQL statement</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>the params array</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$class </td>
+                                <td><p>the class to create an object of and insert into</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>with resultset</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_executeFetchInto" name="method_executeFetchInto" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">executeFetchInto()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">executeFetchInto(string  <span class="argument">$query</span>, array  <span class="argument">$params</span>, string  <span class="argument">$object = null</span>) : object</pre>
+                <p><em>Execute a select-query with arguments and insert the results into
+an existing object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>the SQL statement</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>the params array</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$object </td>
+                                <td><p>the existing object to insert into</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>with resultset</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchAll" name="method_fetchAll" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchAll()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchAll() : array</pre>
+                <p><em>Fetch all resultset.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetch" name="method_fetch" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetch()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetch() : mixed</pre>
+                <p><em>Fetch one resultset.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchClass" name="method_fetchClass" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchClass()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchClass(string  <span class="argument">$classname</span>) : object</pre>
+                <p><em>Fetch one resultset as a new object from this class.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$classname </td>
+                                <td><p>which type of object to instantiate.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchAllClass" name="method_fetchAllClass" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchAllClass()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchAllClass(string  <span class="argument">$classname</span>) : array</pre>
+                <p><em>Fetch full resultset as new objects from this class.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$classname </td>
+                                <td><p>which type of object to instantiate.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchInto" name="method_fetchInto" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchInto()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchInto(object  <span class="argument">$object</span>) : array</pre>
+                <p><em>Fetch one resultset into an object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>object</td>
+                                <td>$object </td>
+                                <td><p>to insert values into.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_execute" name="method_execute" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">execute()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">execute(string  <span class="argument">$query</span>, array  <span class="argument">$params = array()</span>) : boolean</pre>
+                <p><em>Execute a SQL-query and ignore the resultset.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>the SQL statement</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>the params array</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Anax\Database\Exception</dt>
+                            <dd><p>when failing to prepare question.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>returns TRUE on success or FALSE on failure.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_lastInsertId" name="method_lastInsertId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">lastInsertId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">lastInsertId() : integer</pre>
+                <p><em>Return last insert id from autoincremented key on INSERT.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>as last insert id.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_rowCount" name="method_rowCount" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">rowCount()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">rowCount() : integer</pre>
+                <p><em>Return rows affected of last INSERT, UPDATE, DELETE</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>as rows affected on last statement</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchObject" name="method_fetchObject" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchObject()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchObject(string  <span class="argument">$classname</span>) : object</pre>
+                <p><em>Fetch one resultset as an object from this class.</em></p>
+                <p>OBSOLETE replaced by fetchClass</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$classname </td>
+                                <td><p>which type of object to instantiate.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fetchOne" name="method_fetchOne" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fetchOne()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fetchOne() : mixed</pre>
+                <p><em>Fetch one resultset. OBSOLETE replace by fetch()</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>with resultset.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadHistory" name="method_loadHistory" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadHistory()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadHistory() : integer</pre>
+                <p><em>Load query-history from session if available.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>number of database queries made.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_saveHistory" name="method_saveHistory" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">saveHistory()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">saveHistory(string  <span class="argument">$extra = null</span>) : void</pre>
+                <p><em>Save query-history in session, useful as a flashmemory when redirecting to another page.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$extra </td>
+                                <td><p>enables to save some extra debug information.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getNumQueries" name="method_getNumQueries" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getNumQueries()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getNumQueries() : integer</pre>
+                <p><em>Get how many queries have been processed.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>number of database queries made.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getQueries" name="method_getQueries" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getQueries()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getQueries() : array</pre>
+                <p><em>Get all the queries that have been processed.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>with queries.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dump" name="method_dump" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dump()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dump() : string</pre>
+                <p><em>Get a HTML representation of all queries made, for debugging
+and analysing purpose.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>with HTML.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_createException" name="method_createException" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">createException()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">createException(string  <span class="argument">$msg</span>, string  <span class="argument">$query</span>, array  <span class="argument">$param</span>) : void</pre>
+                <p><em>Throw exception using detailed message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$msg </td>
+                                <td><p>detailed error message from PDO</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>query to execute</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$param </td>
+                                <td><p>to match ? in statement</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Anax\Database\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pdoException" name="method_pdoException" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">pdoException()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pdoException(string  <span class="argument">$query</span>, array  <span class="argument">$param</span>) : void</pre>
+                <p><em>Throw exception when pdo failed using detailed message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>query to execute</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$param </td>
+                                <td><p>to match ? in statement</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Anax\Database\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_statementException" name="method_statementException" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">statementException()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">statementException(string  <span class="argument">$query</span>, array  <span class="argument">$param</span>) : void</pre>
+                <p><em>Throw exception when statement failed using detailed message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>query to execute</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$param </td>
+                                <td><p>to match ? in statement</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\Anax\Database\Exception</dt>
+                            <dd></dd>
+                                                                    </dl>
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_expandParamArray" name="method_expandParamArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">expandParamArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">expandParamArray(string  <span class="argument">$query</span>, array  <span class="argument">$params</span>) : array</pre>
+                <p><em>Support arrays in params, extract array items and add to $params
+and insert ? for each entry in the array.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query </td>
+                                <td><p>as the query to prepare.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$params </td>
+                                <td><p>the parameters that may contain arrays.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>with query and params.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Anax.Database.Database.html"><div class="path-wrapper">\Anax\Database\Database</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">DatabaseDebug.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/vendor\anax\database\src\Database\DatabaseDebug.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Anax.html">\Anax</a></li>
+                                                                            <li><a href="../namespaces/chvi17.html">\chvi17</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on May 14th, 2018 at 22:25.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

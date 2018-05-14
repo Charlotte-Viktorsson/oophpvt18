@@ -9,6 +9,7 @@
 */
 $app->router->get("lek/init100", function () use ($app) {
     $data = [
+        "title"  => "Play100 game",
         "method" => "get",
         "action" => "lek/start100",
     ];
@@ -22,6 +23,7 @@ $app->router->get("lek/init100", function () use ($app) {
 */
 $app->router->get("lek/start100", function () use ($app) {
     $data = [
+        "title"  => "Play100 game",
         "method" => "post",
         "action" => "lek/playing100",
     ];
@@ -115,6 +117,7 @@ $app->router->any(["GET", "POST"], "lek/playing100", function () use ($app) {
     }
 
     //prepare data
+    $data["title"] = "Play100 game";
     $data["game"] = $game;
     $data["status"] = $gameStatus;
     $data["computerHand"] = $computerHand;

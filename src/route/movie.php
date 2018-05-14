@@ -30,7 +30,7 @@ $app->router->any(["GET", "POST"], "movie/reset", function () use ($app) {
 
     if ($app->request->getPost("DoReset")) {
         $data["reset"] = true;
-        echo("in if doReset");
+        //echo("in if doReset");
     }
     $app->view->add("movie/reset", $data);
     $app->page->render($data);
