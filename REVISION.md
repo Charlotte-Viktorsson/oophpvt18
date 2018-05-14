@@ -80,3 +80,10 @@ V6.0.0 (2018-05-14)
 * text route file
 * updated functions.php
 * TextFilter class
+* new make doc generated
+
+V6.0.1 (2018-05-14)
+* redovisningstext updated for kmom06
+* removed print in TextFilter class
+* upd input file for markdowntest
+* small fixes after testing on studentserver.

@@ -123,13 +123,6 @@ $app->router->get("text/page/{arg}", function ($arg) use ($app) {
         "pageContent" => null,
     ];
 
-    $content = $app->session->get("content");
-    if ($content == null) {
-        $content = new \chvi17\Content\PageContent();
-          // $game = new \chvi17\Guess\Guess($number, $tries);
-        $app->session->set("content", $content);
-    }
-
     $textFilter = new \chvi17\TextFilter\TextFilter2();
     $data["textFilter"] = $textFilter;
 

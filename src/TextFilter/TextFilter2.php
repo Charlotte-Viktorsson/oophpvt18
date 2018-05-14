@@ -27,7 +27,7 @@ class TextFilter2
     {
         $formattedText = $text;
         foreach ($filter as $rule) {
-            echo($rule . " ");
+            //echo($rule . " ");
             switch ($rule) {
                 case "bbcode":
                     $formattedText = $this->bbcode2html($formattedText);

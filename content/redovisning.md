@@ -161,12 +161,29 @@ Kmom06
 -------------------------
 
 **Hur gick det att jobba med klassen för filtrering och formatting av texten?**
+
+Det gick rätt så bra, vi fick ju de mesta kodsnuttarna.
+Sedan såg jag att jag hade försökt att uppfinna hjulet, för det fanns ju en grund att jobba från efter övningen... Jag använde inte de privata variablerna, ville egentligen göra metoden statisk. Hade problem med namespace och dyl, så min TextFilter-klass i redovisa heter TextFilter2.
+Testfilerna för Textfiltret ligger under samma landningssida som Texterna, men har egen route-klass, egen vy.
+
 **Berätta om din klasstruktur och kodstruktur för din lösning av webbsidor med innehåll i databasen.**
+
+Mycket ligger tyvärr fortfarande i route-klassen, skapade klasser för Content och Page respektive Post, men såg inte vad jag skulle lägga där vid tillfället.
+Sedan rann tiden ut. Hade velat flytta alla definitioner av sql-satser från route någon-annanstans, men det hade kunnat vara en egen klass bara med sådana definitioner.
+Jag tycker jag har ganska olika lösningar för movies respektive texts, men kanske finns det något som kunde återanvänts såsom reset.
+
 **Hur känner du rent allmänt för den koden du skrivit i din me/redovisa, vad är bra och mindre bra? Ser du potential till refactoring av din kod och/eller behov av stöd från ramverket?**
+
+Det finns mycket förbättringspotential i min kod när det gäller objektorientering och att flytta mer av logiken från route-klasserna. Det är ju objektorientering jag borde träna på i den här kursen, men känner att det är en massa annat som tagit tid.
+Jag blev nöjd när jag efter mycket om och men i detta kmom lyckades använda checkboxes och dropdown i edit delen för texterna.
+Hade gärna lagt till lite mer hjälp- och informationstext till användarna, tex vid hoovring över ett inputfält, kanske hinner till projektet.
+Reset möjligheten för texttabellen lyckas av någon anledning (lokalt) förstöra å, ä, ö, men har inte lagt tid att felsöka på det eftersom det blir rätt när jag kör scriptet via vanlig kommandorad och även ser bättre ut på studentservern.
+
 **Vilken är din TIL för detta kmom?**
 
-
-
+Jag tränade på checkboxar och dropdowns, hade problem att få respektive värde "valt" vid uppläsning från databasen.
+Sedan har jag fått kämpa med namespace för mitt textfilter. Hittade url-metoden som hjälper med sökvägar (istället för currentRoute).
+Tror rent allmänt jag lärt mig mycket inför projektet, ska bli spännande!
 
 Kmom07-10
 -------------------------
