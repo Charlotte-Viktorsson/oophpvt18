@@ -87,3 +87,7 @@ V6.0.1 (2018-05-14)
 * removed print in TextFilter class
 * upd input file for markdowntest
 * small fixes after testing on studentserver.
+
+
+V10.0.0 (2018-05-30)
+* added text in redovisning for kmom10/project.

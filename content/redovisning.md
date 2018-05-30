@@ -188,4 +188,46 @@ Tror rent allmänt jag lärt mig mycket inför projektet, ska bli spännande!
 Kmom07-10
 -------------------------
 
-Här är redovisningstexten
+**Krav1 Webbplats som demo**
+
+Fokus för min webbplats är att försöka ha en hållbar livsstil, vilket jag även till viss del anpassat kraven till.
+Jag har gjort en webbplats med startsida och sidor för att se bloggar respektive produkter (som är böcker i mitt fall). För alla sidor finns gemensam header med logo, footer med copyright samt en navbar-meny.
+Eftersom ett av syftena med en sådan här sida är att minska konsumptionen, så har jag inga "produkter" till salu, istället så har jag valt att presentera några böcker i ämnet.
+Vid klickning på en bokbild på bok-sidan alternativt på förstoringsglaset så länkas till en sida med ytterligare information om boken.
+
+Blogg-sidan visar inledningen till blogginläggen med den senaste överst, för att se mer klickar man antingen på respektive rubrik eller läs mer-länkar.
+
+**Krav2 Ordning och reda**
+
+Databasen finns på studentservern och sql-filer för setup/ddl/insert är också skapade liksom ett ER-diagram.
+Unit-tester med 100% coverage på mina egna klasser (utöver views och routes) är gjorda och sparade.
+Generering av kod-dokumentation är möjliggjord och fungerar.
+Route-filerna har jag gjort lite renare genom att flytta definitionerna av SQL-satserna till functions.php.
+
+
+**Krav3 Administrativt gränssnitt**
+
+Det administrativa gränssnittet nås från navbaren och möjliggör editering, borttagning och tillägg av nya blogg-inlägg respektive böcker för en inloggad användare med rätt behörighet.
+Inloggning görs från Admin-sidan och om man är inloggad visas det även till höger i navbaren.
+Användaren doe med lösenordet doe har bara behörighet som user och kan därför inte administrera något, medans användaren admin med lösenordet admin har utökad behörighet och därmed presenteras administrativa länkar. Länkarna visas dels på adminsidan, dels i footers för books/blogs samt i form av fontAwesame ikoner bredvid objekten på bok och bloggsidor.
+
+Vid addering/editering av bloggar kan man välja textfilter mellan bbcode, markdown, link och nl2br liksom vi gjort i kmom06. Kravet att kunna använda markdown till produktinformation har jag implementerat för introduktionstexten till respektive bok.
+
+**Projektets genomförande**
+
+Ett av mina "problem" är att jag blev väldigt uppslukad av själva ämnet jag valde att ha i fokus... Funderingar på innehållet i bloggar och val av produkter tog en hel del tid på det här sättet... i onödan för projektets del, men viktigt i övrigt så klart!
+
+Rent generellt så är sådana här programmeringsprojekt alltid en hel rad större och mindre problem att lösa, och jag upplevde nivån som lagom svår.
+En sak som jag särskilt fastnade på var att pagineringslänkarna slutade fungera. Det visade sig att jag behövde byta ut padding-top till margin-top på elementet nedanför så funkade länkarna - men jag hade såklart felsökt på en massa annat i koden...
+Något som var lite struligt var att byta faviconen på alla ställen: content-sidorna, vyer (och vyer med olika längd på sökvägarna).
+En sak som jag inte fick ordning på var att undvika att spara lösenordet i klartext, provade med password_hash och password_verify, men fick aldrig ordning på vad jag skulle skriva in i insert.sql.
+
+**Tankar om kursen**
+
+Jag tycker kursen har varit givande generellt men tycker att objektorientering inte lyckats bli så centralt. Jag har löst de senaste kmoms samt projekt utan någon större användning av objektorientering (om jag tänker på arv och kompositions hierkier för egna klasser), men visst finns det inbyggt i ramverket att olika klasser har ansvar för olika delar av koden.
+
+Materialet var bra, skulle kanske vilja se lite fördjupning eller exempel på hur man flyttar logiken från routes till klasser. Jag hade behövt lite mer hjälp på vägen med Tärningsspelet i kmom02, men vet inte exakt vad - början på en lösning kanske. Något annat jag hade haft nytta av till projektet är genomgång av password_verify respektive password_hash, fick inte ordning på vad jag skulle lagra för lösenord i databasen eftersom det gjordes från sql-scripten. Jag hade behövt träna mer på att arbeta med arv, kompositioner, traits och interface.
+
+Mångden uppgifter och övningar har varit något ojämnt fördelat mellan kmoms.
+
+Jag är nöjd med kurs och kurspaket, rekommenderar till andra med stark logik alternativt programmeringsbakgrund, och ger betyget 7/10.
