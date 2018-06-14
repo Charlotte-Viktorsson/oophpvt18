@@ -32,6 +32,7 @@ function slugify($str)
     return $str;
 }
 
+
 /**
  * Sanitize value for output in view.
  *
@@ -159,4 +160,42 @@ function checkSelected($aStack, $aNeedle)
     } else {
         return "";
     }
+}
+
+/**
+*   function that returns a unique value of a certain column in db content
+*   @param AppDIMagic $app
+*   @param String $value from user
+*   @param String $column in db, slug or path
+*/
+function getUniqueName($app, $value, $column, $id)
+{
+    //check if null first, that is ok
+    if ($value == null) {
+        return $value;
+    }
+    // else...
+
+    if ($column == "slug") {
+        $sql = "SELECT id, count(id) AS Dublett FROM content WHERE slug = ?;";
+    } else {
+        $sql = "SELECT id, count(id) AS Dublett FROM content WHERE path = ?;";
+    }
+    $res = $app->db->executeFetchAll($sql, [$value]);
+
+    if ($res[0]->Dublett == 0) {
+        //a unique title!
+        return $value;
+    } elseif ($res[0]->id == $id) {
+        //value found, but it is my own
+        return $value;
+    }
+    //else find a unique name by adding a suffix
+    $suffix = 1;
+    while ($res[0]->Dublett > 0) {
+        $testValue = $value . $suffix;
+        $res = $app->db->executeFetchAll($sql, [$testValue]);
+        $suffix += 1;
+    }
+    return $value . ($suffix - 1);
 }

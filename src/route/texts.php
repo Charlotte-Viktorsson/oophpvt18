@@ -252,10 +252,6 @@ $app->router->any(["GET", "POST"], "text/edit", function () use ($app) {
             $filterArrayString = array("contentFilter" => "");
         }
 
-        //echo("contentFilter: ");
-        //var_dump($contentFilter);
-        //echo("filterArrayString");
-        //var_dump($filterArrayString);
         $params = $filterArrayString;
         $params += getPost([
             "contentTitle",
@@ -270,30 +266,35 @@ $app->router->any(["GET", "POST"], "text/edit", function () use ($app) {
         if (!$params["contentSlug"]) {
             $params["contentSlug"] = slugify($params["contentTitle"]);
         }
-
+        $params["contentSlug"] = getUniqueName(
+            $app,
+            $params["contentSlug"],
+            "slug",
+            $params["contentId"]
+        );
         if (!$params["contentPath"]) {
-            //$params["contentPath"] = "";
+            //if contentPath wasnt edited, set null or slugify
             if ($params["contentType"] == "post") {
                 $params["contentPath"] = null;
             } elseif ($params["contentType"] == "page") {
                 $params["contentPath"] = slugify($params["contentTitle"]);
             }
         }
-        //echo("params: ");
-        //var_dump($params);
-        //$filterArrayString["contentFilter"] = implode(",", $contentFilter);
-        //$params = array_splice ($params, 4, 0, $filterArrayString); // splice filter in at position 4, doesn't keep keyname
-        //$params = array_merge(array_slice($params, 0, 4),
-        //            $filterArrayString,
-        //            array_slice($params, 4, count($params)-4));
-        //echo("params: ");
-        //var_dump($params);
+
+        if ($params["contentPath"] != null) {
+            $params["contentPath"] = getUniqueName(
+                $app,
+                $params["contentPath"],
+                "path",
+                $params["contentId"]
+            );
+        }
 
         try {
             $sql = "UPDATE content SET filter=?, title=?, path=?, slug=?, data=?, type=?, published=? WHERE id = ?;";
             $app->db->execute($sql, array_values($params));
 
-            header("Location: edit?id=$contentId");
+            header("Location: admin");
             exit;
         } catch (Exception $e) {
             $app->session->set("flash", "Got an error, update and save again! Errormessage: <br>" . $e->getMessage());

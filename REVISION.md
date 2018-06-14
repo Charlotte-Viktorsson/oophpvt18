@@ -91,3 +91,8 @@ V6.0.1 (2018-05-14)
 
 V10.0.0 (2018-05-30)
 * added text in redovisning for kmom10/project.
+
+
+V6.0.2 (2018-06-14)
+* upd function.php with method to get a uniqe name
+* upd texts.php to call new uniquemaker method
